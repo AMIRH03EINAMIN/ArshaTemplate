@@ -1,0 +1,1321 @@
+/*------------------------------|Var|------------------------------*/
+:root{
+  --clr-one:#37517e;
+  --clr-two:#47b2e4;
+  --clr-white:#FFFFFF;
+  --clr-white-dark:#f3f5fa;
+  --clr-black:#0c0c0c;
+  --clr-gray:#acb6c8;
+  --clr-gray-dark:#4f4f4f;
+  --font-light:"poppinslight";
+  --font-regular:"poppinsregular";
+  --font-semibold:"poppinssemibold";
+  --font-bold:"poppinsbold";
+  --transition5s: all 0.5s;
+  --transition3s: all 0.3s;
+  --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+/*------------------------------|Tag-Style|------------------------------*/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*------------------------------|General Class|------------------------------*/
+.middle {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/*--------------------|Section-flex|--------------------*/
+.section-flex{
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+.section-item-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+.section-item-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+/*--------------------|Btn|--------------------*/
+[class^="btn"]{
+  padding: 12px 25px;
+  display: inline-block;
+  position: relative;
+  border: 2px solid var(--clr-two);
+  border-radius: 10px 45px;
+  color: var(--clr-two);
+  font-family: var(--font-light);
+  text-align: center;
+  transition: all 0.2s;
+}
+[class^="btn"]::after,[class^="btn"]::before{
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  content: "";
+  background-color: var(--clr-two);
+  transition: var(--transition5s);
+}
+[class^="btn"]::after{
+  top: -5px;
+  left: 0;
+}
+[class^="btn"]::before{
+  bottom: -5px;
+  right: 0;
+}
+[class^="btn"]:hover{
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+[class^="btn"]:hover::after,[class^="btn"]:hover:before{
+  width: 100%;
+}
+.btn-background{
+  background-color: var(--clr-two);
+  color: var(--clr-white);
+}
+/*--------------------|Title & Text|--------------------*/
+.title-one{
+  font-family: var(--font-bold);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--clr-white);
+}
+[class^="title-two"]{
+  font-family: var(--font-semibold);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--clr-one);
+}
+.title-two-logo{
+  color: var(--clr-white);
+}
+.title-two-section{
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.title-two-section::after{
+  width: 30px;
+  height: 4px;
+  position: absolute;
+  bottom: -11px;
+  content: "";
+  background-color: var(--clr-two);
+  animation-name: title-section;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+.title-two-section::before{
+  width: 100px;
+  height: 2px;
+  position: absolute;
+  bottom: -10px;
+  content: "";
+  background-color: var(--clr-gray);
+}
+.title-three{
+  font-family: var(--font-semibold);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--clr-one);
+}
+.title-four{
+  font-family: var(--font-regular);
+  font-size: 20px;
+  font-weight: 300px;
+  color: var(--clr-one);
+}
+.text{
+  line-height: 20px;
+  font-family: var(--font-light);
+  font-size: 16px;
+  font-weight: 300;
+  text-align: justify;
+  color: var(--clr-gray-dark);
+}
+/*--------------------|Details|--------------------*/
+.details{
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  transition: var(--transition5s);
+}
+.details[open] .summary{
+  color: var(--clr-two);
+}
+.summary{
+  padding: 20px 15px 20px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  list-style: none;
+  font-family: var(--font-light);
+  font-size: 18px;
+  transition: var(--transition5s);
+  white-space: normal;
+}
+.summary:hover{
+  color: var(--clr-two);
+  cursor: pointer;
+}
+.summary::before{
+  padding-left: 15px;
+  position: absolute;
+  left: 0;
+  content: "\3f";
+  font-size: 20px;
+  color: var(--clr-two);
+}
+.details p{
+  padding: 0 15px 20px;
+}
+.details i{
+  text-align: right;
+  transition: var(--transition5s);
+}
+.details[open] i{
+  transform: rotate(90deg);
+}
+.details[open] .summary {
+  margin-top: 10px;
+}
+/*------------------------------|Animation|------------------------------*/
+@keyframes home-img{
+  0%{
+    transform: translateY(-20px);
+  }
+  50%{
+    transform: translateY(20px);
+  }
+  100%{
+    transform: translateY(-20px);
+  }
+}
+@keyframes title-section{
+  0%{
+    transform: translateX(30px);
+  }
+  50%{
+    transform: translateX(-30px);
+  }
+  100%{
+    transform: translateX(30px);
+  }
+}
+@keyframes NavDropDown {
+  0% {
+    opacity: .99999;
+    transform: rotateX(90deg);
+  }
+
+  30% {     
+    transform: rotateX(-30deg) rotateY(5deg);
+    animation-timing-function: ease-in-out;
+  } 
+
+  65% {
+    transform: rotateX(30deg) rotateY(-3deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  100% {
+    transform: rotateX(0);
+    animation-timing-function: ease-in-out;
+  }
+}
+/*------------------------------|Layout|------------------------------*/
+/*--------------------|Header|--------------------*/
+header{
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color:var( --clr-one) ;
+}
+header div.middle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header div.middle div.navigation{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+header div.middle div.navigation input{
+  display: none;
+}
+header div.middle div.navigation label{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  visibility: hidden;
+  cursor: pointer;
+}
+header div.middle div.navigation label span{
+  width: 25px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--clr-white);
+  transition: var(--transition5s);
+}
+header div.middle div.navigation nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+header div.middle div.navigation ul{
+  display: flex;
+  gap: 5px;
+}
+header div.middle div.navigation ul li a.DropDown{
+  position: relative;
+}
+header div.middle div.navigation ul li .active{
+  color: var(--clr-two);
+}
+header div.middle div.navigation ul li ul li a{
+  color:var(--clr-black);
+}
+header div.middle div.navigation ul li {
+  padding: 20px 15px;
+  cursor: pointer;
+}
+header div.middle div.navigation ul li a.DropDown i{
+  text-align: center;
+  transform: rotate(90deg);
+}
+header div.middle div.navigation  ul li ul{
+  display: none;
+  position: absolute;
+  top: 63px;
+  z-index: 1;
+  width: 200px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background: transparent;
+  border-radius: 5px;
+}
+header div.middle div.navigation  ul li:hover ul{
+  padding: 15px 0;
+  display: block;
+  box-shadow:var(--box-shadow);
+  animation-name: NavDropDown;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  background:var(--clr-white);
+}
+ header div.middle div.navigation  ul li ul li ul{
+  padding: 0 !important;
+  display: none !important;
+  position:absolute !important;
+  left:200px;
+  top:80px;
+}
+header div.middle div.navigation ul li ul li:hover ul{
+  display:block !important;
+}
+header div.middle div.navigation  ul li ul li a i{
+  padding: 0 0 0 15px;
+  color: var(--clr-two);
+}
+header div.middle div.navigation ul li a{
+  position: relative;
+  display: block;
+  padding: 4px 0;
+  color:var(--clr-white);
+  transition: 0.9s;
+}
+
+  header div.middle div.navigation ul li a::after {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    background:var(--clr-two);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.9s;
+  }
+
+  header div.middle div.navigation ul li a:hover {
+    color:var(--clr-two);
+  }
+
+  header div.middle div.navigation ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+/*--------------------|footer|--------------------*/
+ /*--------------------|JoinOurNewsletter|--------------------*/
+   footer section.JoinOurNewsletter{
+    padding: 50px 0;
+    background-color: var(--clr-white-dark); 
+ }
+
+footer section.JoinOurNewsletter div input{
+  width: 400px;
+  height: 40px;
+  padding: 5px 15px;
+  display: inline-block;
+  border: 2px solid var(--clr-two);
+  border-radius: 10px 45px;
+  color: var(--clr-two);
+  font-family: var(--font-light);
+  box-shadow: var(--box-shadow);
+  border: none;
+  outline: 2px solid var(--clr-white-dark);
+  transition: var(--transition3s);
+ }
+ footer section.JoinOurNewsletter div button:hover{
+  color: var(--clr-two);
+  cursor: pointer;
+ }
+ footer section.JoinOurNewsletter input:focus {
+  outline: 2px solid var(--clr-two);
+ }
+ /*--------------------| Our Address |--------------------*/
+ footer section.OurAddress div.middle{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 90px;
+    padding:40px 0;
+ }
+ footer section.OurAddress div.middle >div{
+    display:grid;
+    gap:10px;
+ }
+ footer section.OurAddress div.middle div ul li i{
+    color: var(--clr-two);
+    padding: 0 5px;
+ }
+ footer section.OurAddress div.middle div ul li{
+   padding: 5px 0;
+   cursor: pointer;
+ }
+footer section.OurAddress div.middle div ul li:hover{
+   font-size:17px;
+   font-weight: 900;
+   color: var(--clr-two);
+}
+ footer section.OurAddress div.middle div div  i{
+  padding:8px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 20px;
+  background-color: var(--clr-gray);
+  color: var(--clr-two);
+  transition: var(--transition5s);
+  cursor: pointer;
+ }
+ footer section.OurAddress div.middle div div i:hover{
+  background-color: var(--clr-two);
+  color: var(--clr-white);
+ }
+  /*--------------------| end |--------------------*/
+  footer section.end{
+    background-color: var(--clr-one);
+  }
+  footer section.end div{
+    padding:20px;
+    display: grid;
+    grid-template-columns: 5fr 2fr 1fr;
+    align-items: center;
+    color: var(--clr-white);
+  }
+  footer section.end div p{
+    white-space: nowrap;
+  }
+  footer section.end div p span{
+    color: var(--clr-two);
+  }
+  footer section.end div a i{
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 20px;
+    background-color: var(--clr-gray);
+    color: var(--clr-two);
+    transition: var(--transition5s);
+  }
+  footer section.end div a i:hover{
+    background-color: var(--clr-two);
+    color: var(--clr-white);
+  }
+/*--------------------|Main|--------------------*/
+main .middle >.text{
+  text-align: center;
+}
+/*----------|Home|----------*/
+main section.home{
+  min-height: 100vh;
+  background-color: var(--clr-one);
+}
+main section.home img{
+  width: 500px;
+  height: auto;
+  border: 2px solid var(--clr-one);
+  animation-name: home-img;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+main section.home div.home-item div.home-text p{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: var(--clr-gray);
+}
+main section.home div.home-item div.home-text div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+}
+main section.home div.home-item div.home-text div a:nth-child(2){
+  font-family: var(--font-light);
+  font-size: 16px;
+  color: var(--clr-white);
+  transition: var(--transition5s);
+}
+main section.home div.home-item div.home-text div a:nth-child(2):hover{
+  color: var(--clr-two);
+}
+/*----------|Company|----------*/
+main section.company{
+  background-color: var(--clr-white-dark);
+}
+main section.company div.company-item{
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  align-items: center;
+  justify-content: space-around;
+}
+main section.company div.company-item i{
+  padding: 20px;
+  font-size: 30px;
+  color: var(--clr-gray-dark);
+  cursor: pointer;
+  transition: var(--transition5s);
+}
+main section.company div.company-item i:hover{
+  transform: scale(1.5);
+}
+/*----------|About|----------*/
+main section.about{
+  background-color: var(--clr-white);
+}
+main section.about div.about-item{
+  align-items: flex-start;
+}
+main section.about div.about-item div{
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+main section.about div.about-item div:nth-child(1) p i{
+  color: var(--clr-two);
+}
+/*----------|Architecto|----------*/
+main section.architecto{
+  background-color: var(--clr-white-dark);
+}
+main section.architecto div.architecto-item img{
+  width: 500px;
+  height: auto;
+}
+main section.architecto div.architecto-item div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+main section.architecto div.architecto-item div h2 span{
+  font-family: var(--font-light);
+  font-size: 25px;
+}
+/*----------|Dignissimos|----------*/
+main section.dignissimos div.dignissimos-item img{
+  width: 500px;
+  height: auto;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress{
+  width: 100%;
+  height: 12px;
+  border-radius: 0;
+  position: relative;
+  cursor: pointer;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::after{
+  position: absolute;
+  top: -20px;
+  left: 0;
+  content: attr(class);
+  font-family: var(--font-regular);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--clr-one);
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::before{
+  position: absolute;
+  top: -20px;
+  right: 0;
+  content: attr(value)"%";
+  font-family: var(--font-regular);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--clr-one);
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::-webkit-progress-bar{
+  background-color: var(--clr-gray);
+  overflow: hidden;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::-moz-progress-bar{
+  background-color: var(--clr-gray);
+  overflow: hidden;
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::-webkit-progress-value{
+  background-color: var(--clr-one);
+  transition: var(--transition5s);
+}
+ main section.dignissimos div.dignissimos-item div.dignissimos-box div progress:hover::-webkit-progress-value{
+  transform: translateX(-100%);
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress::-moz-progress-value{
+  background-color: var(--clr-one);
+  transition: var(--transition5s);
+}
+main section.dignissimos div.dignissimos-item div.dignissimos-box div progress:hover::-moz-progress-value{
+  transform: translateX(-100%);
+}
+/*----------|Services|----------*/
+main section.services{
+  background-color: var(--clr-white-dark);
+}
+main section.services div.services-item ul{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 300px;
+  gap: 30px;
+}
+main section.services div.services-item ul li{
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  background-color: var(--clr-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 100% 100% 100% 100% / 50% 50% 50% 50%;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition5s);
+}
+main section.services div.services-item ul li:hover{
+  border-top: 10px double var(--clr-one);
+  border-bottom: 10px double var(--clr-two);
+}
+main section.services div.services-item ul li h3{
+  transition: var(--transition5s);
+}
+main section.services div.services-item ul li:hover h3{
+  color: var(--clr-two);
+}
+main section.services div.services-item ul i{
+  font-size: 25px;
+  color: var(--clr-two);
+}
+/*----------|Call|----------*/
+main section.call{
+  background-color: var(--clr-one);
+}
+main section.call *{
+  color: var(--clr-white);
+}
+main section.call > div.call-item a.btn-background{
+  white-space: nowrap;
+}
+main section.call > div.call-item div h3{
+  margin-bottom: 10px;
+}
+main section.call > div.section-item-flex{
+  gap: 150px;
+}
+/*----------|Portfolio|----------*/
+main section.portfolio div.portfolio-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+main section.portfolio div.portfolio-item div.portfolio-btn{
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+main section.portfolio div.portfolio-item div.portfolio-btn span{
+  width: 80px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-two);
+  border-radius: 10px 45px;
+  transition: var(--transition5s);
+}
+main section.portfolio div.portfolio-item div.portfolio-btn a{
+  width: 80px;
+  height: 100%;
+  padding: 12px 0;
+  text-align: center;
+  z-index: 1;
+  color: var(--clr-one);
+}
+main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(2):hover ~ span{
+  left: 90px;
+}
+main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(3):hover ~ span{
+  left: 180px;
+}
+main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(4):hover ~ span{
+  left: 270px;
+}
+main section.portfolio div.portfolio-item div.img-box{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 300px;
+  grid-auto-flow: dense;
+  gap: 20px;
+  cursor: pointer;
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img div.overlay{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  left: -80px;
+  background-color: var(--clr-one);
+  transition: var(--transition5s);
+  opacity: 0.8;
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img div.overlay i{
+  padding: 20px;
+  border-radius: 100%;
+  background-color: var(--clr-one);
+  color: var(--clr-white);
+  font-size: 30px;
+  transition: var(--transition5s);
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img div.overlay i:hover{
+  color: var(--clr-two);
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img:hover div.overlay{
+  left: 0;
+}
+main section.portfolio div.portfolio-item div.img-box div:hover img{
+  transform: scale(1.02);
+  filter: blur(1px);
+}
+main section.portfolio div.portfolio-item div.img-box div.div-img img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: fill;
+  transition: var(--transition5s);
+}
+main section.portfolio div.portfolio-item div.img-box div.tall{
+  grid-row: span 2;
+}
+main section.portfolio div.portfolio-item div.img-box div.wide{
+  grid-column: span 2;
+}
+/*----------|Team|----------*/
+main section.team{
+  background-color: var(--clr-white-dark);
+}
+main section.team div.team-item div.team-box{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+}
+main section.team div.team-item div.team-box div.team-box-item{
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--clr-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition5s);
+}
+main section.team div.team-item div.team-box div.team-box-item:nth-child(1):hover{
+  transform: translateX(10px) translateY(10px);
+}
+main section.team div.team-item div.team-box div.team-box-item:nth-child(2):hover{
+  transform: translateX(-10px) translateY(10px);
+}
+main section.team div.team-item div.team-box div.team-box-item:nth-child(3):hover{
+  transform: translateX(10px) translateY(-10px);
+}
+main section.team div.team-item div.team-box div.team-box-item:nth-child(4):hover{
+  transform: translateX(-10px) translateY(-10px);
+}
+main section.team div.team-item div.team-box div.team-box-item img{
+  width: 150px;
+  height: 150px;
+  display: block;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 3px solid var(--clr-white);
+  transition: var(--transition5s);
+}
+main section.team div.team-item div.team-box div.team-box-item:hover img{
+  border: 3px solid var(--clr-two);
+}
+main section.team div.team-item div.team-box div.team-box-item >div{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+main section.team div.team-item div.team-box div.team-box-item >div P:nth-child(2){
+  position: relative;
+}
+main section.team div.team-item div.team-box div.team-box-item >div P:nth-child(2)::after{
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  content: "";
+  background-color: var(--clr-two);
+  transition: var(--transition5s);
+}
+main section.team div.team-item div.team-box div.team-box-item:hover >div P:nth-child(2)::after{
+  width: 70px;
+}
+main section.team div.team-item div.team-box div.team-box-item >div div.social-media a i{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  background-color: var(--clr-gray);
+  color: var(--clr-one);
+  transition: var(--transition5s);
+}
+main section.team div.team-item div.team-box div.team-box-item >div div.social-media a i:hover{
+  background-color: var(--clr-two);
+  color: var(--clr-white);
+}
+/*----------|Pricing|----------*/
+main section.pricing div.pricing-item div.pricing-box{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item{
+  padding: 70px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  position: relative;
+  border-radius: 5px;
+  background-color: var(--clr-white);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition5s);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item:hover{
+  transform: scaleY(1.05);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item::after{
+  width: 1px;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  content: "";
+  background-color: var(--clr-two);
+  visibility: hidden;
+  transition: var(--transition5s);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item::before{
+  width: 1px;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  background-color: var(--clr-two);
+  visibility: hidden;
+  transition: var(--transition5s);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item:hover::after{
+  transform: scaleX(400);
+  visibility:visible;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item:hover::before{
+  transform: scaleX(400);
+  visibility:visible;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item div.item-one p{
+  margin: 10px 0;
+  padding-left: 18px;
+  position: relative;
+  font-family: var(--font-semibold);
+  font-size: 50px;
+  color: var(--clr-one);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item div.item-one p::before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "\24";
+  font-size: 30px;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item div.item-one span{
+  color: var(--clr-two);
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item div.item-two p{
+  margin-bottom: 15px;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item div.item-two p i{
+  color: #68B984;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item:nth-child(1) div.item-two :is(p:nth-child(4),p:nth-child(5)){
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+main section.pricing div.pricing-item div.pricing-box div.pricing-box-item:nth-child(1) div.item-two :is(p:nth-child(4) i,p:nth-child(5) i){
+  color: #DC3535;
+}
+/*----------|Asked|----------*/
+main section.asked{
+  background-color: var(--clr-white-dark);
+}
+main section.asked div.asked-item div.asked-box{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+main section.asked div.asked-item div.asked-box .details{
+  width: 900px;
+}
+/*----------|Contact|----------*/
+main section.contact div.contact-item div.contact-box{
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  grid-template-rows: auto;
+  gap: 30px;
+}
+main section.contact div.contact-item div.contact-box > :is(ul, div){
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-shadow: var(--box-shadow);
+  border-top: 3px solid var(--clr-two);
+  border-bottom: 3px solid var(--clr-two);
+  border-radius: 5px;
+}
+main section.contact div.contact-item div.contact-box >div{
+  align-items: center;
+}
+main section.contact div.contact-item div.contact-box ul li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+main section.contact div.contact-item div.contact-box ul li:hover i{
+  background-color: var(--clr-two);
+  color: var(--clr-white);
+}
+main section.contact div.contact-item div.contact-box ul li i{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 25px;
+  background-color: var(--clr-gray);
+  color: var(--clr-two);
+  transition: var(--transition5s);
+}
+main section.contact div.contact-item div.contact-box div form{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 30px;
+}
+main section.contact div.contact-item div.contact-box div form div{
+  position: relative;
+}
+main section.contact div.contact-item div.contact-box div form div label{
+  padding: 2px 15px;
+  position: absolute;
+  top: 18px;
+  left: 5px;
+  font-family: var(--font-light);
+  font-size: 18px;
+  color: var(--clr-black);
+  background-color: var(--clr-white);
+  transition: var(--transition3s);
+}
+main section.contact div.contact-item div.contact-box div form div :is(input, textarea){
+  width: 100%;
+  padding: 20px 15px;
+  color: var(--clr-gray-dark);
+  font-family: var(--font-light);
+  font-size: 16px;
+  color: var(--clr-gray-dark);
+  outline: none;
+  transition: var(--transition3s);
+  resize: vertical;
+}
+main section.contact div.contact-item div.contact-box div form div :is(input, textarea):focus{
+  border: 2px solid var(--clr-two);
+}
+main section.contact div.contact-item div.contact-box div form div :is(input, textarea):focus + label{
+  transform: translateX(5px) translateY(-26px);
+  border-right: 2px solid var(--clr-one);
+  border-left: 2px solid var(--clr-one);
+  font-size: 15px;
+}
+main section.contact div.contact-item div.contact-box div form div :is(input, textarea):valid + label{
+  transform: translateX(5px) translateY(-26px);
+  border-right: 2px solid var(--clr-two);
+  border-left: 2px solid var(--clr-two);
+  font-size: 15px;
+}
+main section.contact div.contact-item div.contact-box div form div.name{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+main section.contact div.contact-item div.contact-box div form div.email{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+main section.contact div.contact-item div.contact-box div form div.subject{
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+main section.contact div.contact-item div.contact-box div form div.message{
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+/*------------------------------|Media-Max-1024|------------------------------*/
+@media screen and (max-width: 1024px) {
+  .middle {
+    max-width:1024px;
+  }
+  .section-item-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header{
+    position: relative;
+  }
+  header div.middle{
+    position: relative;
+  }
+
+  header div.middle div.navigation nav{
+    width: 100%;;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 34px;
+    right: 100%;
+    background-color: var(--clr-white);
+    border-radius: 5px;
+    transition: var(--transition5s);
+
+  }
+  header div.middle div.navigation nav ul{
+    flex-direction: column;
+  }
+  header div.middle div.navigation nav ul li a{
+    color: var(--clr-black);
+  }
+  header div.middle div.navigation label{
+    visibility: visible;
+  }
+  header div.middle div.navigation nav ul li ul{
+    width: 700px;
+    height: auto;
+    position: relative;
+    top: 10px;
+    left: 0px;
+  }
+  header div.middle div.navigation  ul li ul li ul{
+    position:relative !important;
+    top: 10px;
+    left: 0;
+  }
+  header div.middle div.navigation ul li a.DropDown i{
+    transform: rotate(0);
+  }
+  header div.middle div.navigation input:checked ~ nav{
+    right: 0;
+  }
+  header div.middle div.navigation input:checked ~ label >span:nth-child(1){
+    transform: rotateZ(-45deg) translateY(6px);
+  }
+header div.middle div.navigation input:checked ~ label >span:nth-child(2){
+    display: none;
+  }
+  header div.middle div.navigation input:checked ~ label >span:nth-child(3){
+    transform: rotateZ(45deg) translateY(-6px);
+  }
+  main section.home div.home-item{
+    flex-direction: column-reverse;
+  }
+  main section.home div.home-item *{
+    text-align: center;
+  }
+  main section.home div.home-item div.home-text div{
+    justify-content: center;
+  }
+  main section.company div.company-item{
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+  main section.architecto div.architecto-item{
+    flex-direction: column-reverse;
+  }
+  main section.services div.services-item ul{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(200px, 300px));
+  }
+  main section.call *{
+    text-align: center;
+  }
+  main section.portfolio div.portfolio-item div.img-box{
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 300px;
+  }
+  main section.team div.team-item div.team-box{
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  main section.team div.team-item div.team-box div.team-box-item:hover{
+    transform: translateY(-10px) !important;
+  }
+  main section.pricing div.pricing-item div.pricing-box{
+    grid-template-columns: minmax(400px, 1fr);
+  }
+  main section.asked div.asked-item div.asked-box .details{
+    width: 700px;
+  }
+  main section.contact div.contact-item div.contact-box{
+    grid-template-columns: minmax(700px, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  footer section.OurAddress div.middle{
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px;
+ }
+}
+/*------------------------------|Media-Max-768|------------------------------*/
+@media screen and (max-width: 768px) {
+  .middle {
+    max-width: 768px;
+  }
+  header div.middle div.navigation nav ul li ul{
+    width: 400px;
+  }
+  main section.home img{
+    width: 420px;
+  }
+  main section.architecto div.architecto-item img{
+    width: 420px;
+  }
+  main section.dignissimos div.dignissimos-item img{
+    width: 420px;
+  }
+  main section.services div.services-item ul{
+    grid-template-columns: minmax(200px, 400px);
+    grid-template-rows: repeat(4, minmax(200px, 300px));
+  }
+  main section.portfolio div.portfolio-item div.img-box{
+    display: flex;
+    flex-direction: column;
+  }
+  main section.pricing div.pricing-item div.pricing-box{
+    grid-template-columns: minmax(300px, 1fr);
+  }
+  main section.asked div.asked-item div.asked-box .details{
+    width: 400px;
+  }
+  main section.contact div.contact-item div.contact-box{
+    grid-template-columns: minmax(400px, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  footer section.end div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/*------------------------------|Media-Max-480|------------------------------*/
+@media screen and (max-width: 480px) {
+  .middle {
+    max-width: 480px;
+    padding: 0 10px;
+  }
+  .title-one{
+    font-size: 30px;
+  }
+  [class^="title-two"]{
+    font-size: 20px;
+    text-align: center;
+  }
+  .title-three{
+    font-size: 20px;
+  }
+  .title-four{
+    font-size: 18px;
+  }
+  header div.middle div.navigation nav ul li ul{
+    width: 220px;
+  }
+  main section.home img{
+    width: 250px;
+  }
+  main section.company div.company-item{
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+  }
+  main section.about div.about-item{
+    gap: 200px;
+  }
+  main section.architecto div.architecto-item img{
+    width: 250px;
+  }
+  main section.dignissimos div.dignissimos-item img{
+    width: 250px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn{
+    width: 250px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn span{
+    width: 60px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn a{
+    width: 60px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(2):hover ~ span{
+    left: 62px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(3):hover ~ span{
+    left: 126px;
+  }
+  main section.portfolio div.portfolio-item div.portfolio-btn a:nth-child(4):hover ~ span{
+    left: 190px;
+  }
+  main section.team div.team-item div.team-box div.team-box-item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  main section.pricing div.pricing-item div.pricing-box{
+    grid-template-columns: minmax(260px, 1fr);
+  }
+  main section.asked div.asked-item div.asked-box .details{
+    width: 260px;
+  }
+  main section.contact div.contact-item div.contact-box{
+    grid-template-columns: minmax(260px, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  main section.contact div.contact-item div.contact-box div form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  footer section.JoinOurNewsletter div.middle div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  footer section.JoinOurNewsletter div input{
+    width: 280px;
+   }
+  footer section.OurAddress div.middle{
+    grid-template-columns: 1fr; 
+    grid-template-rows: repeat(4, 1fr);
+    gap: 40px;
+ }
+}
